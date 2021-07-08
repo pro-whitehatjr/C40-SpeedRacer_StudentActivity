@@ -7,8 +7,7 @@ class Game {
 
     this.leader1 = createElement("h2");
     this.leader2 = createElement("h2");
-//add Property to check player moving
-
+    //add Property to check player moving
   }
 
   getState() {
@@ -44,23 +43,23 @@ class Game {
     powerCoins = new Group();
 
     // Adding fuel sprite in the game
-    this.addSpirtes(fuels, 4, fuelImage, 0.02);
+    this.addSprites(fuels, 4, fuelImage, 0.02);
 
     // Adding coin sprite in the game
-    this.addSpirtes(powerCoins, 18, powerCoinImage, 0.09);
+    this.addSprites(powerCoins, 18, powerCoinImage, 0.09);
   }
 
-  addSpirtes(spriteGroup, numberOfSprites, spirteImage, scale) {
+  addSprites(spriteGroup, numberOfSprites, spriteImage, scale) {
     for (var i = 0; i < numberOfSprites; i++) {
       var x, y;
 
       x = random(width / 2 + 150, width / 2 - 150);
       y = random(-height * 4.5, height - 400);
-      var spirte = createSprite(x, y);
-      spirte.addImage("spirte", spirteImage);
+      var sprite = createSprite(x, y);
+      sprite.addImage("sprite", spriteImage);
 
-      spirte.scale = scale;
-      spriteGroup.add(spirte);
+      sprite.scale = scale;
+      spriteGroup.add(sprite);
     }
   }
 
@@ -90,16 +89,14 @@ class Game {
   play() {
     this.handleElements();
     this.handleResetButton();
- 
+
     Player.getPlayersInfo();
     player.getCarsAtEnd();
 
     if (allPlayers !== undefined) {
       image(track, 0, -height * 5, width, height * 6);
 
-
       //Add shoFuelBar()
-      
 
       this.showLife();
       this.showLeaderboard();
@@ -132,12 +129,8 @@ class Game {
 
       //Write an condition to move car without pressing up Arrow
 
-
-
-
       // handling keyboard events
       this.handlePlayerControls();
-            
 
       const finshLine = height * 6 - 100;
 
@@ -148,7 +141,7 @@ class Game {
         player.update();
         this.showRank();
       }
-      
+
       drawSprites();
     }
   }
@@ -162,9 +155,7 @@ class Game {
       collected.remove();
     });
 
-   
     // Reducing Player car fuel
-  
   }
 
   handlePowerCoins(index) {
@@ -258,7 +249,7 @@ class Game {
 
   handlePlayerControls() {
     if (keyIsDown(UP_ARROW)) {
-      this.playerMoving = true;                      //C40 //SA
+      this.playerMoving = true; //C40 //SA
       player.positionY += 10;
       player.update();
     }
@@ -274,7 +265,7 @@ class Game {
     }
   }
 
- //POP Up to show rank  of player on finish Line
+  //POP Up to show rank  of player on finish Line
   showRank() {
     swal({
       title: `Awesome!${"\n"}Rank${"\n"}${player.rank}`,
@@ -286,8 +277,7 @@ class Game {
     });
   }
 
-
-//Pop Up to show game over when fuel is over
+  //Pop Up to show game over when fuel is over
   gameOver() {
     swal({
       title: `Game Over`,
